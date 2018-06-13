@@ -22,7 +22,7 @@ public class Controller {
     private TextField email, password;
 
     public void login(ActionEvent event) throws IOException {
-        if (email.getText().equals("szymom.sp1@wp.pl") && password.getText().equals("1q2w3e")) {
+        if (email.getText().equals("a") && password.getText().equals("a")) {
             Stage primaryStage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("Kitten.fxml"));
             primaryStage.setTitle("Kittens");

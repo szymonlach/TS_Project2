@@ -8,11 +8,11 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.KittenController">
    <children>
-      <Button fx:id="next" layoutX="274.0" layoutY="502.0" mnemonicParsing="false" text="Next" />
-      <Label fx:id="name" layoutX="291.0" layoutY="62.0" text="Label" />
+      <Button fx:id="next" layoutX="274.0" layoutY="502.0" mnemonicParsing="false" onAction="#next" text="Next" />
+      <Label fx:id="name" layoutX="300.0" layoutY="62.0" text="Label" />
       <Label layoutX="177.0" layoutY="62.0" text="Name" />
       <Label layoutX="177.0" layoutY="94.0" text="Vote count" />
-      <Label fx:id="voteCount" layoutX="291.0" layoutY="105.0" text="Label" />
+      <Label fx:id="voteCount" layoutX="300.0" layoutY="94.0" text="Label" />
       <ImageView fx:id="image" fitHeight="327.0" fitWidth="346.0" layoutX="127.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
