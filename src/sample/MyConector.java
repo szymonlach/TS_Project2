@@ -8,13 +8,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MyConector {
 
     private JSONObject autoryzacja;
-    private int number;
 
     MyConector(String email, String password) throws Exception {
         URL url = new URL("http://smieszne-koty.herokuapp.com/oauth/token?grant_type=password&email=" + email + "&password=" + password);
@@ -34,14 +31,13 @@ public class MyConector {
         System.out.println(response);
 
         autoryzacja = new JSONObject(response.toString());
-        number = 0;
     }
 
-    public List<Object> getCat() throws IOException {
+    public JSONArray getCats(int page) throws IOException {
 
 
         String token = autoryzacja.getString("access_token");
-        URL url = new URL("http://smieszne-koty.herokuapp.com/api/kittens?access_token=" + token);
+        URL url = new URL("http://smieszne-koty.herokuapp.com/api/kittens?access_token=" + token + "&page=" + page);
 
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
@@ -57,14 +53,7 @@ public class MyConector {
         System.out.println(response);
 
         JSONArray kotki = new JSONArray(response.toString());
+        return kotki;
 
-        JSONObject kotek = kotki.getJSONObject(number);
-        number++;
-
-        List<Object> data = new ArrayList<>();
-        data.add(kotek.getString("name"));
-        data.add(kotek.getInt("vote_count"));
-        data.add(kotek.getString("url"));
-        return data;
     }
 }
