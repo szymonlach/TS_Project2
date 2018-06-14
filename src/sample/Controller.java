@@ -22,12 +22,16 @@ public class Controller {
     private TextField email, password;
 
     public void login(ActionEvent event) throws IOException {
-        if (email.getText().equals("a") && password.getText().equals("a")) {
+        if (email.getText().equals("szymom.sp1@wp.pl") && password.getText().equals("1q2w3e")) {
             Stage primaryStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("Kitten.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Kitten.fxml"));
+            KittenController controller = new KittenController(email.getText(), password.getText());
+            loader.setController(controller);
+            Parent root = loader.load();
             primaryStage.setTitle("Kittens");
             primaryStage.setResizable(false);
             primaryStage.setScene(new Scene(root));
+
             primaryStage.show();
             ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
 

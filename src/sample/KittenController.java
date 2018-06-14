@@ -16,12 +16,20 @@ import java.util.ResourceBundle;
 
 public class KittenController implements Initializable {
 
+
+    KittenController(String email, String password) {
+        this.password = password;
+        this.email = email;
+    }
+
     @FXML
-    private Label name, voteCount, labNumber;
+    private Label name, voteCount;
     @FXML
     private ImageView image;
     @FXML
     private Button next;
+
+    private String email, password;
 
     private MyConector myConector;
     private int number, page;
@@ -33,11 +41,11 @@ public class KittenController implements Initializable {
         try {
             number = 0;
             page = 1;
-            myConector = new MyConector("szymom.sp1@wp.pl", "1q2w3e");
+            myConector = new MyConector(email, password);
             data = myConector.getCats(page);
             if (number < data.length())
                 getCatInfo(number);
-            System.out.println(data.length());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,10 +71,17 @@ public class KittenController implements Initializable {
     private void getCatInfo(int number) {
         JSONObject kotek = data.getJSONObject(number);
         this.number++;
-        labNumber.setText(String.valueOf(this.number));
         name.setText(kotek.getString("name"));
         voteCount.setText(String.valueOf(kotek.getInt("vote_count")));
         image.setImage(new Image(kotek.getString("url")));
 
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
