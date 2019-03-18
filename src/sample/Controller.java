@@ -15,7 +15,6 @@ import java.io.IOException;
 
 public class Controller {
 
-
     @FXML
     private Label status;
     @FXML
@@ -24,7 +23,7 @@ public class Controller {
     public void login(ActionEvent event) throws IOException {
         if (email.getText().equals("szymom.sp1@wp.pl") && password.getText().equals("1q2w3e")) {
             Stage primaryStage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Kitten.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/Kitten.fxml"));
             KittenController controller = new KittenController(email.getText(), password.getText());
             loader.setController(controller);
             Parent root = loader.load();

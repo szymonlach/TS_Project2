@@ -35,7 +35,6 @@ public class MyConector {
 
     public JSONArray getCats(int page) throws IOException {
 
-
         String token = autoryzacja.getString("access_token");
         URL url = new URL("http://smieszne-koty.herokuapp.com/api/kittens?access_token=" + token + "&page=" + page);
 
